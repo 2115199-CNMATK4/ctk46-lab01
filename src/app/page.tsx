@@ -14,7 +14,7 @@ export default function Home() {
         </p>
         <div className="bg-blue-100 rounded-lg p-4">
           <p className="text-blue-800">
-            🚀 Đây là project Next.JS đầu tiên của tôi!
+            Yêu thích Android & Makoto Shinkai fans
           </p>
         </div>
       </div>
