@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+# Build output
+.next/
+dist/
+build/
+# Environment variables (chứa thông tin nhạy cảm)
+.env
+.env.local
+.env.production
+# IDE
+.vscode/
+.idea/
+# OS files
+.DS_Store
+Thumbs.db
