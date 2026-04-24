@@ -1,15 +1,20 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, posts } from "@/data/posts";
+
 interface BlogPostPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const postSlug = slug.join("/");
+  const post = getPostBySlug(postSlug);
+
   if (!post) {
     notFound();
   }
+
   return (
     <div>
       <Link
@@ -33,8 +38,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     </div>
   );
 }
+
 export async function generateStaticParams() {
   return posts.map((post) => ({
-    slug: post.slug,
+    slug: post.slug.split("/"),
   }));
 }
