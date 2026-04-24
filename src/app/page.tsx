@@ -11,7 +11,7 @@ items-center justify-center"
           <span className="text-4xl">A</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Xin chào! Tôi là <span className="text-blue-600">Nguyễn Văn A</span>
+          Xin chào! Tôi là <span className="text-blue-600">Hoàng Phạm Anh Duy</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
           Sinh viên Công nghệ Thông tin tại Đại học Đà Lạt. Đam mê phát triển

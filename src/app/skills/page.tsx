@@ -1,7 +1,7 @@
 const skillGroups = [
   {
     title: "Ngôn ngữ lập trình",
-    skills: ["JavaScript", "TypeScript", "Python", "Java"],
+    skills: ["JavaScript", "C", "Python", "Java"],
   },
   {
     title: "Frontend",
@@ -9,11 +9,11 @@ const skillGroups = [
   },
   {
     title: "Backend",
-    skills: ["Node.js", "Express", "REST API"],
+    skills: ["Node.js", "REST API"],
   },
   {
     title: "Cơ sở dữ liệu & công cụ",
-    skills: ["PostgreSQL", "MongoDB", "Git", "GitHub"],
+    skills: ["Git", "GitHub"],
   },
 ];
 
