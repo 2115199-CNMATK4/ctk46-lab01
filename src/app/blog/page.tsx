@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Post } from "@/types/post";
 
 async function getPosts(): Promise<Post[]> {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts", { cache: 'no-store' });
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   if (!res.ok) {
     throw new Error("Không thể tải danh sách bài viết");
   }
