@@ -1,14 +1,45 @@
 "use client";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { createGuestbookEntry, ActionState } from "@/app/guestbook/actions";
+
 const initialState: ActionState = {
   success: false,
 };
+
 export default function GuestbookForm() {
+  const [formVersion, setFormVersion] = useState(0);
+
+  return (
+    <GuestbookFormContent
+      key={formVersion}
+      onReset={() => setFormVersion((prev) => prev + 1)}
+    />
+  );
+}
+
+function GuestbookFormContent({ onReset }: { onReset: () => void }) {
   const [state, formAction, isPending] = useActionState(
     createGuestbookEntry,
     initialState,
   );
+
+  if (state.success) {
+    return (
+      <div className="bg-gray-50 rounded-lg p-6 mb-8 space-y-4">
+        <p className="text-green-600 text-sm font-medium">
+          Gửi lời nhắn thành công!
+        </p>
+        <button
+          type="button"
+          onClick={onReset}
+          className="bg-white border border-gray-300 text-gray-700 px-5 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          Gửi tin nhắn khác
+        </button>
+      </div>
+    );
+  }
+
   return (
     <form
       action={formAction}
@@ -62,9 +93,6 @@ transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isPending ? "Đang gửi..." : "Gửi lời nhắn"}
       </button>
-      {state.success && (
-        <p className="text-green-600 text-sm">Gửi lời nhắn thành công!</p>
-      )}
     </form>
   );
 }

@@ -37,6 +37,35 @@ export async function createGuestbookEntry(
       errors: result.error.flatten().fieldErrors,
     };
   }
+
+  const ONE_MINUTE_MS = 60 * 1000;
+  const now = Date.now();
+  const normalizedName = result.data.name.trim().toLowerCase();
+  const normalizedMessage = result.data.message.trim().toLowerCase();
+
+  const hasRecentDuplicate = guestbookEntries.some((entry) => {
+    const entryTime = new Date(entry.createdAt).getTime();
+    if (Number.isNaN(entryTime) || now - entryTime > ONE_MINUTE_MS) {
+      return false;
+    }
+
+    return (
+      entry.name.trim().toLowerCase() === normalizedName &&
+      entry.message.trim().toLowerCase() === normalizedMessage
+    );
+  });
+
+  if (hasRecentDuplicate) {
+    return {
+      success: false,
+      errors: {
+        message: [
+          "Lời nhắn trùng lặp trong vòng 1 phút. Vui lòng thử lại sau.",
+        ],
+      },
+    };
+  }
+
   // Thêm entry mới vào mảng
   const newEntry = {
     id: Date.now().toString(),
