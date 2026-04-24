@@ -16,11 +16,20 @@ export default function GuestbookPage() {
     "/api/guestbook",
     fetcher,
   );
+  const [currentPage, setCurrentPage] = useState(1);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   // State cho form
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  const pageSize = 5;
+  const totalPages = Math.max(1, Math.ceil(entries.length / pageSize));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const paginatedEntries = entries.slice(
+    (safeCurrentPage - 1) * pageSize,
+    safeCurrentPage * pageSize,
+  );
   // Xử lý gửi lời nhắn mới
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -127,7 +136,30 @@ transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       {!isLoading && !error && (
         <div className="space-y-4">
           <p className="text-sm text-gray-400">{entries.length} lời nhắn</p>
-          {entries.map((entry) => (
+          <div className="flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+              disabled={safeCurrentPage === 1}
+              className="px-4 py-2 rounded-lg border text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Trang trước
+            </button>
+            <span className="text-sm text-gray-500">
+              Trang {safeCurrentPage} / {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+              }
+              disabled={safeCurrentPage === totalPages}
+              className="px-4 py-2 rounded-lg border text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Trang sau
+            </button>
+          </div>
+          {paginatedEntries.map((entry) => (
             <div
               key={entry.id}
               className="border rounded-lg p-4 hover:shadow-sm transition-shadow"
