@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import ThemeToggle from "@/components/theme-toggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,8 @@ export default function Navbar() {
             Portfolio
           </Link>
 
-          <div className="hidden md:flex gap-6">
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -70,6 +72,7 @@ export default function Navbar() {
 
         {isOpen && (
           <div className="md:hidden mt-4 flex flex-col gap-3 border-t pt-4 dark:border-gray-800">
+            <ThemeToggle />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
