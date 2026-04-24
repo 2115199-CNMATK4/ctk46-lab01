@@ -13,12 +13,12 @@ export default function BlogLayout({
           <div className="bg-gray-50 rounded-lg p-4">
             <h3 className="font-semibold mb-3">Danh mục</h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li className="hover:text-blue-600 cursor-pointer">Công nghệ</li>
-              <li className="hover:text-blue-600 cursor-pointer">Học tập</li>
-              <li className="hover:text-blue-600 cursor-pointer">
+              <li className="hover:text-violet-600 cursor-pointer">Công nghệ</li>
+              <li className="hover:text-violet-600 cursor-pointer">Học tập</li>
+              <li className="hover:text-violet-600 cursor-pointer">
                 Dự án cá nhân
               </li>
-              <li className="hover:text-blue-600 cursor-pointer">Cuộc sống</li>
+              <li className="hover:text-violet-600 cursor-pointer">Cuộc sống</li>
             </ul>
           </div>
         </aside>

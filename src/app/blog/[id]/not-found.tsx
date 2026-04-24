@@ -6,7 +6,7 @@ export default function BlogNotFound() {
       <p className="text-gray-600 mb-6">
         Bài viết bạn tìm kiếm không tồn tại hoặc đã bị xóa.
       </p>
-      <Link href="/blog" className="text-blue-600 hover:underline">
+      <Link href="/blog" className="text-violet-600 hover:underline">
         ← Quay lại danh sách bài viết
       </Link>
     </div>

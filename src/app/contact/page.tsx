@@ -8,7 +8,7 @@ export default function ContactPage() {
             <strong>Email:</strong>{" "}
             <a
               href="mailto:2115199@dlu.edu.vn"
-              className="text-blue-600 hover:underline"
+              className="text-violet-600 hover:underline"
             >
               2115199@dlu.edu.vn
             </a>
@@ -19,7 +19,7 @@ export default function ContactPage() {
               href="https://github.com/2115199-CNMATK4/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-violet-600 hover:underline"
             >
               github.com/2115199-CNMATK4/
             </a>

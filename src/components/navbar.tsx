@@ -21,7 +21,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-sm border-b dark:bg-gray-900 dark:border-gray-800">
       <div className="max-w-5xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-blue-600 dark:text-blue-400">
+          <Link href="/" className="text-xl font-bold text-violet-600 dark:text-blue-400">
             Portfolio
           </Link>
 
@@ -31,7 +31,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-200 dark:hover:text-blue-400"
+                className="text-gray-600 hover:text-violet-600 transition-colors dark:text-gray-200 dark:hover:text-blue-400"
               >
                 {link.label}
               </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-200 dark:hover:text-blue-400"
+                className="text-gray-600 hover:text-violet-600 transition-colors dark:text-gray-200 dark:hover:text-blue-400"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
