@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Post, User } from "@/types/post";
+import { Post, PostComment, User } from "@/types/post";
 import LikeButton from "@/components/like-button";
 
 interface BlogPostPageProps {
@@ -23,10 +23,23 @@ async function getUser(userId: number): Promise<User> {
  return res.json();
 }
 
+async function getComments(id: string): Promise<PostComment[]> {
+ const res = await fetch(
+  `https://jsonplaceholder.typicode.com/posts/${id}/comments`
+ );
+ if (!res.ok) {
+  throw new Error("Không thể tải danh sách bình luận");
+ }
+ return res.json();
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
  const { id } = await params;
  const post = await getPost(id);
- const author = await getUser(post.userId);
+ const [author, comments] = await Promise.all([
+  getUser(post.userId),
+  getComments(id),
+ ]);
 
  return (
   <div>
@@ -61,6 +74,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
          </p>
          <p className="text-gray-500 text-sm">{author.company.catchPhrase}</p>
     </div>
+          <div className="border-t pt-6 mb-6">
+           <h3 className="font-semibold mb-4">Bình luận ({comments.length})</h3>
+           <div className="space-y-3">
+            {comments.map((comment) => (
+         <div key={comment.id} className="rounded-lg border border-gray-200 p-4">
+          <p className="text-sm font-medium text-gray-700">{comment.name}</p>
+          <p className="text-xs text-gray-500 mb-2">{comment.email}</p>
+          <p className="text-sm text-gray-600 whitespace-pre-line">{comment.body}</p>
+         </div>
+            ))}
+           </div>
+          </div>
     <div className="border-t pt-6">
      <LikeButton />
     </div>
