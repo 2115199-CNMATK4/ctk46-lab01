@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 export const metadata: Metadata = {
-  title: "Portfolio — Nguyễn Văn A",
+  title: "Portfolio — Hoàng Pham Anh Duy",
   description: "Website portfolio cá nhân — CTK46",
 };
 export default function RootLayout({
