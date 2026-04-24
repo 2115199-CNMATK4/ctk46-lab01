@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Counter from "@/components/counter";
+
 export default function HomePage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
@@ -66,6 +68,14 @@ export default function HomePage() {
         >
           Xem blog →
         </Link>
+      </div>
+
+      <div className="mt-16 flex flex-col items-center gap-4 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <h2 className="text-2xl font-bold">Counter</h2>
+        <p className="text-gray-600 dark:text-gray-300">
+          Component đếm số đơn giản được hiển thị ngay trên trang chủ.
+        </p>
+        <Counter />
       </div>
     </div>
   );
