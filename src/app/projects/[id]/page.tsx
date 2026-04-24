@@ -20,7 +20,7 @@ export default async function ProjectDetailPage({
     <div className="max-w-5xl mx-auto px-4 py-12">
       <Link
         href="/projects"
-        className="text-blue-600 hover:underline text-sm mb-6 inline-block"
+        className="text-violet-600 hover:underline text-sm mb-6 inline-block"
       >
         ← Quay lại danh sách dự án
       </Link>
@@ -35,7 +35,7 @@ export default async function ProjectDetailPage({
             {project.tech.map((tech) => (
               <span
                 key={tech}
-                className="bg-blue-100 text-blue-700 text-sm px-3 py-1 rounded-full"
+                className="bg-violet-100 text-violet-700 text-sm px-3 py-1 rounded-full"
               >
                 {tech}
               </span>

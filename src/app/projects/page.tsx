@@ -52,7 +52,7 @@ flex flex-col"
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="bg-blue-100 text-blue-700 text-sm px-3 py-1 roundedfull"
+                  className="bg-violet-100 text-violet-700 text-sm px-3 py-1 roundedfull"
                 >
                   {t}
                 </span>

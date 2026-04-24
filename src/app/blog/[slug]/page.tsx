@@ -14,13 +14,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <div>
       <Link
         href="/blog"
-        className="text-blue-600 hover:underline text-sm mb-6 inline-block"
+        className="text-violet-600 hover:underline text-sm mb-6 inline-block"
       >
         ← Quay lại danh sách
       </Link>
       <article>
         <div className="flex items-center gap-3 mb-4">
-          <span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">
+          <span className="bg-violet-100 text-violet-700 text-xs px-2 py-1 rounded">
             {post.category}
           </span>
           <span className="text-sm text-gray-400">{post.date}</span>
