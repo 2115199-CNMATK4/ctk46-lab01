@@ -5,13 +5,13 @@ export default function HomePage() {
       {/* Hero section */}
       <div className="text-center mb-16">
         <div
-          className="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex
+          className="w-24 h-24 bg-violet-100 rounded-full mx-auto mb-6 flex
 items-center justify-center"
         >
           <span className="text-4xl">A</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Xin chào! Tôi là <span className="text-blue-600">Hoàng Phạm Anh Duy</span>
+          Xin chào! Tôi là <span className="text-violet-600">Hoàng Phạm Anh Duy</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
           Sinh viên Công nghệ Thông tin tại Đại học Đà Lạt. Đam mê phát triển
@@ -20,7 +20,7 @@ items-center justify-center"
         <div className="flex justify-center gap-4">
           <Link
             href="/projects"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue700 transition-colors"
+            className="bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet700 transition-colors"
           >
             Xem dự án
           </Link>
@@ -48,8 +48,8 @@ items-center justify-center"
           ].map((skill) => (
             <div
               key={skill}
-              className="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50
-hover:text-blue-600 transition-colors"
+              className="bg-gray-50 rounded-lg p-4 text-center hover:bg-violet-50
+hover:text-violet-600 transition-colors"
             >
               {skill}
             </div>
@@ -57,14 +57,14 @@ hover:text-blue-600 transition-colors"
         </div>
       </div>
       {/* CTA section */}
-      <div className="bg-blue-50 rounded-2xl p-8 text-center">
+      <div className="bg-violet-50 rounded-2xl p-8 text-center">
         <h2 className="text-2xl font-bold mb-3">Đọc Blog của tôi</h2>
         <p className="text-gray-600 mb-4">
           Chia sẻ kiến thức và kinh nghiệm về lập trình, công nghệ
         </p>
         <Link
           href="/blog"
-          className="text-blue-600 font-semibold hover:underline"
+          className="text-violet-600 font-semibold hover:underline"
         >
           Xem blog →
         </Link>
