@@ -59,6 +59,14 @@ Bạn viết trực tiếp trong HTML:
     date: "2025-02-01",
     category: "Học tập",
   },
+  {
+    slug: "kinh-nghiem-tim-kiem",
+    title: "Chia sẻ kinh nghiệm tìm kiếm thông tin trên internet",
+    excerpt: `Những bài học rút ra sau nhiều năm sử dụng các công cụ tìm kiếm.`,
+    content: `Sau khi tìm kiếm nhiều tài liệu và giải pháp trên internet, tôi rút ra một điều tìm kiếm bằng tiếng Anh sẽ cho kết quả tốt hơn rất nhiều so với tiếng Việt. Ví dụ, thay vì tìm kiếm "học lập trình React", tôi sẽ tìm "learn React programming". Điều này giúp tôi tiếp cận được nhiều tài liệu chất lượng hơn và nhanh chóng hơn.`,
+    date: "2026-01-01",
+    category: "Chia sẻ kinh nghiệm",
+  },
 ];
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((post) => post.slug === slug);
