@@ -1,7 +1,21 @@
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+
 export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-6">Giới thiệu</h1>
+      <div className="flex items-center gap-4 mb-6">
+        <Avatar className="size-14">
+          <AvatarFallback className="bg-blue-100 text-violet-700 text-lg">
+            HD
+          </AvatarFallback>
+        </Avatar>
+        <div>
+          <h1 className="text-3xl font-bold">Giới thiệu</h1>
+          <p className="text-gray-500 dark:text-gray-400">
+            Hoàng Pham Anh Duy
+          </p>
+        </div>
+      </div>
       <div className="space-y-4 text-gray-700 dark:text-gray-300">
         <p>
           Xin chào! Tôi là <strong>Hoàng Pham Anh Duy</strong>, sinh viên năm 4 ngành
