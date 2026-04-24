@@ -5,6 +5,7 @@ export default function GuestbookPage() {
   const [entries, setEntries] = useState<GuestbookEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   // State cho form
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -16,7 +17,7 @@ export default function GuestbookPage() {
       if (!res.ok) throw new Error("Lỗi khi tải dữ liệu");
       const data = await res.json();
       setEntries(data);
-    } catch (err) {
+    } catch {
       setError("Không thể tải sổ lưu bút. Vui lòng thử lại.");
     } finally {
       setLoading(false);
@@ -24,7 +25,8 @@ export default function GuestbookPage() {
   }
   // Gọi fetchEntries khi component mount
   useEffect(() => {
-    fetchEntries();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchEntries();
   }, []);
   // Xử lý gửi lời nhắn mới
   async function handleSubmit(e: React.FormEvent) {
@@ -42,7 +44,7 @@ export default function GuestbookPage() {
       setName("");
       setMessage("");
       await fetchEntries();
-    } catch (err) {
+    } catch {
       alert("Không thể gửi lời nhắn. Vui lòng thử lại.");
     } finally {
       setSubmitting(false);
@@ -51,14 +53,17 @@ export default function GuestbookPage() {
   // Xử lý xóa lời nhắn
   async function handleDelete(id: string) {
     if (!confirm("Bạn có chắc muốn xóa lời nhắn này?")) return;
+    setDeletingId(id);
     try {
       const res = await fetch(`/api/guestbook/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Lỗi khi xóa");
       await fetchEntries();
-    } catch (err) {
+    } catch {
       alert("Không thể xóa lời nhắn. Vui lòng thử lại.");
+    } finally {
+      setDeletingId(null);
     }
   }
   return (
@@ -139,10 +144,12 @@ transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     {new Date(entry.createdAt).toLocaleDateString("vi-VN")}
                   </span>
                   <button
+                    type="button"
                     onClick={() => handleDelete(entry.id)}
-                    className="text-xs text-red-400 hover:text-red-600 transitioncolors"
+                    disabled={deletingId === entry.id}
+                    className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Xóa
+                    {deletingId === entry.id ? "Đang xóa..." : "Xóa"}
                   </button>
                 </div>
               </div>
