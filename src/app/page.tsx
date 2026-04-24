@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Counter from "@/components/counter";
+import CopyButton from "@/components/copy-button";
 
 export default function HomePage() {
   return (
@@ -31,6 +32,16 @@ export default function HomePage() {
           >
             Liên hệ
           </Link>
+        </div>
+
+        <div className="mt-8 mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 text-left shadow-sm dark:border-gray-800 dark:bg-gray-900">
+          <p className="text-sm font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-400 mb-2">
+            Copy demo
+          </p>
+          <p className="text-gray-600 dark:text-gray-300 mb-4 wrap-break-word">
+            Xin chào, đây là đoạn text mẫu để kiểm tra chức năng copy.
+          </p>
+          <CopyButton text="Xin chào, đây là đoạn text mẫu để kiểm tra chức năng copy." label="Copy demo" />
         </div>
       </div>
       {/* Skills section */}
