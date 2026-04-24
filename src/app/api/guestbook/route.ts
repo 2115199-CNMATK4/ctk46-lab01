@@ -1,8 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { guestbookEntries } from "@/data/guestbook";
 // GET /api/guestbook — Lấy danh sách tất cả lời nhắn
-export async function GET() {
-  return NextResponse.json(guestbookEntries);
+export async function GET(request: NextRequest) {
+  const limitParam = request.nextUrl.searchParams.get("limit");
+
+  if (!limitParam) {
+    return NextResponse.json(guestbookEntries);
+  }
+
+  const limit = Number.parseInt(limitParam, 10);
+  if (Number.isNaN(limit) || limit <= 0) {
+    return NextResponse.json(
+      { error: "limit phải là số nguyên dương" },
+      { status: 400 },
+    );
+  }
+
+  return NextResponse.json(guestbookEntries.slice(0, limit));
 }
 // POST /api/guestbook — Thêm lời nhắn mới
 export async function POST(request: NextRequest) {
