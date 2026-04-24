@@ -16,10 +16,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b">
+    <nav className="bg-white shadow-sm border-b dark:bg-gray-900 dark:border-gray-800">
       <div className="max-w-5xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-blue-600">
+          <Link href="/" className="text-xl font-bold text-blue-600 dark:text-blue-400">
             Portfolio
           </Link>
 
@@ -28,7 +28,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-200 dark:hover:text-blue-400"
               >
                 {link.label}
               </Link>
@@ -37,7 +37,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded p-2 text-gray-700 hover:bg-gray-100"
+            className="md:hidden inline-flex items-center justify-center rounded p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
             aria-label="Mở menu điều hướng"
             aria-expanded={isOpen}
             onClick={() => setIsOpen((prev) => !prev)}
@@ -69,12 +69,12 @@ export default function Navbar() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden mt-4 flex flex-col gap-3 border-t pt-4">
+          <div className="md:hidden mt-4 flex flex-col gap-3 border-t pt-4 dark:border-gray-800">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-200 dark:hover:text-blue-400"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
