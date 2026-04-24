@@ -35,10 +35,14 @@ async function getComments(id: string): Promise<PostComment[]> {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
  const { id } = await params;
- const post = await getPost(id);
- const [author, comments] = await Promise.all([
-  getUser(post.userId),
-  getComments(id),
+ const postPromise = getPost(id);
+ const authorPromise = postPromise.then((post) => getUser(post.userId));
+ const commentsPromise = getComments(id);
+
+ const [post, author, comments] = await Promise.all([
+  postPromise,
+  authorPromise,
+  commentsPromise,
  ]);
 
  return (
